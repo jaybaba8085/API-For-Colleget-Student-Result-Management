@@ -17,6 +17,9 @@ public class BranchController {
     @Autowired
     private BranchService branchService;
 
+
+
+    // API for Adding Branch
     @PostMapping("/addBranch")
     public String  addBranch(@RequestBody()BranchRequestDto branchRequestDto)
     {
@@ -25,6 +28,8 @@ public class BranchController {
     }
 
 
+
+    // API -1 for getting HOD contact Number
     @GetMapping("/get_hod_contactNo")
     public ResponseEntity<List<String>> getContactNumbersOfHODsWithMaximumPassingStudents() {
 
@@ -33,6 +38,9 @@ public class BranchController {
         return ResponseEntity.ok(contactNumbers);
     }
 
+
+
+    // API -3 for Getting Brant Associated with Required Branch
 
     @GetMapping("/get_grant_of_Recent_Branch")
     public ResponseEntity<Integer> getGrantForDepartmentWithMaxPassingStudents() {

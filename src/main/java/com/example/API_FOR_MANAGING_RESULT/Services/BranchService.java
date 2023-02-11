@@ -1,22 +1,25 @@
 package com.example.API_FOR_MANAGING_RESULT.Services;
 
-
-import com.example.API_FOR_MANAGING_RESULT.ENUMS.BranchName;
 import com.example.API_FOR_MANAGING_RESULT.Models.Branch;
+
 import com.example.API_FOR_MANAGING_RESULT.Models.CollegeStudent;
+
 import com.example.API_FOR_MANAGING_RESULT.Repositories.BranchRepository;
 import com.example.API_FOR_MANAGING_RESULT.Repositories.CollegeStudentRepository;
+
 import com.example.API_FOR_MANAGING_RESULT.RequestDto.BranchRequestDto;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 @Service
 public class BranchService {
+
+
 
     @Autowired
     private  CollegeStudentRepository collegeStudentRepository;
@@ -24,6 +27,11 @@ public class BranchService {
     @Autowired
     private  BranchRepository branchRepository;
 
+
+
+
+
+    // ADD BRANCH API Implementation
     public void addBranch(BranchRequestDto branchRequestDto) {
 
         Branch branch = Branch.builder().branchName(branchRequestDto.getBranchName())
@@ -33,6 +41,12 @@ public class BranchService {
 
         branchRepository.save(branch);
     }
+
+
+
+
+    // API - 1 Implementation getting HOD contact number
+
 
     public List<String> findContactNoOfHODWithMaxPassingStudents() {
 
@@ -70,6 +84,12 @@ public class BranchService {
     }
 
 
+
+
+
+    // API - 3 Implementation for Getting Brant Associated with Required Branch
+
+
     public Integer findGrantGivenToDepartmentWithMaxPassingStudents() {
 
 
@@ -98,6 +118,8 @@ public class BranchService {
         //this is the branch which contains Most Passed Student
         Branch requiredBranch = branchRepository.findById(id).get();
 
+
+        // return the Grant of that Branch
         return requiredBranch.getGrants();
     }
 

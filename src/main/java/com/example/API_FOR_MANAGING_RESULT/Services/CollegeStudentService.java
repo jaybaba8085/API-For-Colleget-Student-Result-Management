@@ -23,6 +23,10 @@ public class CollegeStudentService {
     private CollegeStudentRepository collegeStudentRepository;
 
 
+
+    // Add Student in Their Respective Branch
+
+
     public void addCollegeStudents(CollegeStudentRequestDto collegeStudentRequestDto) {
 
         Branch branch =branchRepository.findById(collegeStudentRequestDto.getBranch_id()).get();
@@ -42,6 +46,11 @@ public class CollegeStudentService {
        // just checking the size of  student list
         System.out.println( "StudentList  "+ branch.getCollegeStudentList().size());
     }
+
+
+
+
+    // API - 2   List of Student Roll No. of recent Branch
 
 
     public List<String> findRollNumbersOfMostRecentBranch() {
@@ -77,6 +86,7 @@ public class CollegeStudentService {
             rollNoList.add(collegeStudent.getRollNo());
         }
 
+        //return the final list of Student Roll Numbers
         return  rollNoList;
     }
 
